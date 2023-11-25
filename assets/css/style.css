@@ -1,0 +1,837 @@
+*{margin: 0; padding: 0;}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    background-color: rgb(21, 173, 255);
+    margin: 0;
+}
+
+h1 {
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+form {
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    width: 400px;
+}
+
+
+.form-field {
+    margin-bottom: 5px;
+}
+
+.form-field label {
+    display: block;
+    color: #000;
+    margin-bottom: 5px;
+}
+
+.form-field input, .form-field textarea {
+    border: solid 2px #f0f0f0;
+    border-radius: 3px;
+    padding: 10px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.form-field input:focus, .form-field textarea {
+    outline: none;
+}
+
+.form-field textarea {
+    height: 100px;
+}
+
+.form-field.error input, .form-field.error textarea, .form-field.error select {
+    border-color: #dc3545;
+}
+
+.form-field.success input, .form-field.success textarea {
+    border-color: #28a745;
+}
+
+.form-field small {
+    color: #dc3545;
+    display: block;
+}
+
+.form-field input[type=submit] {
+    width: 100%;
+    padding: 3%;
+    background: #1B9C85;
+    border-bottom: 2px solid #1B9C85;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.form-field a {
+    color: #1B9C85;
+    text-decoration: none;
+}
+
+.add-product a {
+    position: fixed;
+    bottom:10%;
+    left: 90%;
+    box-shadow: 10px 10px 29px -12px rgba(0,0,0,0.75);
+}
+
+
+
+
+
+
+
+/*---------------------------Navbar----------------------------------*/
+
+
+/* *{overflow-x: hidden; margin: 0;} */
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.leftnavbar .rightnavbar{
+    width: 45%;
+    height: 50%;
+    margin-top: 25%;
+    margin-bottom: 25%;
+    list-style: none;
+}
+.navbar{
+    margin-bottom: 10vh;
+    display: flex;
+    padding: 1%;
+    width: 98%;
+    height: 80px;
+    background-color: rgb(21, 173, 255);
+    justify-content: space-between;
+}
+.img-logo{
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+}
+
+.headerbar{
+    float: center;
+    position: absolute;
+    left: 30%;
+}
+
+.rightnavbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rightnavbar ul {
+    list-style: none;
+    display: flex;
+}
+.rightnavbar ul li {
+    margin-right: 20px;
+}
+
+.rightnavbar ul li a{
+    text-decoration: none;
+    color: black;
+}
+.rightnavbar ul li:last-child {
+    margin-right: 0;
+}
+.dropdown-content a{
+  margin: 10px;
+}
+.dropdown-content {
+    position: absolute;
+    /* padding: 0.5rem 0;
+    margin: 0.5rem -0.5rem; */
+    background: white;
+    color: black;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    /* border-radius: 0.5rem; */
+    display: none;
+}
+.dropdown-content a:hover{
+    background: black;
+    color: #fff;
+    /* border-radius: 0.5rem; */
+}
+.rightnavbar li:hover .dropdown-content {
+    display: block;
+    display: flex;
+    flex-direction: column;
+}
+
+i {
+    margin-right: 10px;
+}
+input{
+    border-radius: 12px;
+}
+
+
+/* --------------------------------CARD------------------------------------------ */
+
+.content h2 {
+    text-align: center;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card{
+    margin: 20px;
+    width: 280px;
+    border-radius: 10px;
+    /* background-color: rgba(1, 208, 255, 0.467) */
+    box-shadow: 0px 4px 4px 0px rgb(91, 91, 91);
+}
+.cardInfo{
+    margin: 2%;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.cardImg{
+    margin: 4%;
+    width: 90%;
+    height: 20vh;
+    border-radius: 1rem;
+}
+
+
+/* --------------------------------LIST PRODUCT------------------------------------------ */
+
+.daftar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.productdetail{
+    padding:10px;
+}
+.productCardOuter{
+    margin: 20px;
+    width: 280px;
+    height: auto;
+    border-radius: 10px;
+    /* background-color: rgba(1, 208, 255, 0.467) */
+    box-shadow: 0px 4px 4px 0px rgb(91, 91, 91);
+}
+.productCardInner{
+    margin: 2%;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.productCardimage{
+    margin: 4%;
+    width: 90%;
+    height: 20vh;
+    border-radius: 1rem;
+}
+.productCardtitle{
+    margin: 10px;
+    width:100%;
+}
+.productCardprice{
+    margin: 10px;
+}
+.productCardinfo{
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+a{text-decoration: none;}
+.addtocart{
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    background-color: blue;
+    height: 40px;
+    border-radius: 30px;
+    color: #fff;
+}
+.addtocart_outer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+/* -------------------------FOOTER----------------------------- */
+    
+.foot-er{
+    /* margin-top: 10vh; */
+    width: 100%;
+    height: 50vh;
+    background-color: black;
+    padding:30px 0px;
+    font-family: 'Play', sans-serif;
+    text-align:center;
+}
+    
+.row{
+    width:100%;
+    margin:1% 0%;
+    padding:0.6% 0%;
+    color:gray;
+    font-size:0.8em;
+}
+    
+.row a{
+    text-decoration:none;
+    color:gray;
+    transition:0.5s;
+}
+    
+.row a:hover{
+    color:#fff;
+}
+    
+.row ul{
+    width:100%;
+}
+    
+.row ul li{
+    display:inline-block;
+    margin:0px 30px;
+}
+    
+.row a i{
+    font-size:2em;
+    margin:0% 1%;
+}
+    
+/* @media (max-width:720px){
+    .footer{
+    text-align:left;
+    padding:5%;
+}
+.footer .row ul li{
+    display:block;
+    margin:10px 0px;
+    text-align:left;
+}
+.footer .row a i{
+    margin:0% 3%;
+}
+} */
+
+/* .................................User Account.................................. */
+
+.pesanan_user{
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    /* background-color: rgb(196, 191, 191); */
+    box-shadow: 0px 4px 4px 0px rgb(91, 91, 91);
+    /* align-items: center; */
+    width: 50%;
+    margin-left: 25%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+.pesanan_user h3{
+    margin: 10px;
+}
+.user_account_container h3{
+    margin: 20px;
+}
+.pesanan_user div{
+    margin: 10px;
+}
+.pesanan_user_inner{
+    display: flex;
+}
+/* .pesanan_user_inner a{
+    margin: 5px;
+    margin-left: 20px;
+} */
+.pesanan_user_inner div{
+    /* height: 150px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+    margin-left: 20px;
+    color: #000;
+}
+/* .pesanan_user_inner a:hover{
+    background-color: #c1fff4;
+} */
+.pesanan_user img{
+    width: 50px;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.user_account_container {
+    /* display: flex; */
+    border-radius: 20px;
+    /* background-color: rgb(196, 191, 191); */
+    box-shadow: 0px 4px 4px 0px rgb(91, 91, 91);
+    align-items: center;
+    width: 50%;
+    margin-left: 25%;
+     
+  }
+
+  .user_content a{
+    margin-left: 75%;
+    /* background-color: #f0f0f0; */
+    color:#000;
+}
+  
+  .user_menu {
+    height: 100vh;
+    width: 200px;
+    background-color: #fffefe;
+    padding-top: 20px;
+  }
+  
+  
+  .user_menu ul {
+    list-style-type: none; 
+    padding: 0;
+    margin-top: 50%;
+  }
+  
+  .user_menu li {
+    padding: 8px;
+    text-align: center;
+    
+  }
+  
+  .user_menu a {
+    text-decoration: none;
+    color: rgb(0, 174, 255);
+    font-weight: bold;
+  }
+  
+  .user_content {
+    flex: 1;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .profile{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+  }
+  .icon{
+    width: 95px;
+    height: 95px;
+  }
+  .icon span {
+    word-wrap: break-word;
+  }
+
+  /* -------------------------- KERANJANG ----------------------------- */
+
+  /* .img_in_cart .cart_price .cart_qty .cart_total{
+    padding: 50px;
+  } */
+  .tabelkeranjang{
+    border-collapse: separate;
+  }
+  .daftarkeranjang td{
+    padding: 50px;
+  }
+  .daftarkeranjang{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .daftarkeranjang h1{
+    margin: 30vh;
+  }
+  .keterangan_produk_keranjang{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .keterangan_produk_keranjang p{
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-bottom: 8px;
+  }
+  .row_product{
+    /* background-color: #a3d4ff; */
+    border-radius: 20px;
+    /* background-color: rgba(1, 208, 255, 0.467) */
+    box-shadow: 0px 4px 4px 0px rgb(91, 91, 91);
+  }
+  .img_in_cart{
+    display: flex;
+  }
+  .img_icon{
+    margin: 5px;
+    /* width: 100px;
+    height: 100px;
+    border-radius: 1rem; */
+  }
+  .img_icon img{
+    margin: 2px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 1rem;
+    /* height: 100px; */
+  }
+
+  .OrderCart{
+    /* background-color: #ffff87; */
+    margin-top: 10vh;
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .OrderCart div{
+    margin: 10px;
+    border-radius: 10px;
+  }
+
+  .order_button_in_cart_outer div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 70px;
+    background-color: rgb(255, 79, 79);
+    color: white;
+    font-weight: bold;
+  }
+
+  /* --------------------------------------------- LAMAN ORDER (BELUM BAYAR) ------------------------------------------------ */
+
+  .BB_body{
+    position: relative;
+  }
+  .table_order table{
+    position: relative;
+    width: 85vw;
+    height: 20vh;
+    box-shadow: 0px 4px 4px 0px rgb(91, 91, 91);
+  }
+  .table_order table{
+    margin: 3vh;
+  }
+  .container td{
+    position: relative;
+    width: 17vw;
+  }
+  .container div{
+    position: relative;
+    width: 17vw;
+    height: 17.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container a{
+    color: #000;
+  }
+  
+  /* --------------------------------------------- ORDER DETAIL ------------------------------------------------ */
+
+  .order_body{
+    position: relative;
+  }
+  .order_body div{
+    position: relative;
+  }
+  .order_detail{
+    position: relative;
+  }
+  .order_detail table{
+    width: 80vw;
+  }
+  .row_order_detail{
+    position: relative;
+    box-shadow: 0px 4px 4px 0px rgb(91, 91, 91);
+  }
+  .row_order_detail div{
+    margin: 10px;
+  }
+  .img_order_detail{
+    display: flex;
+  }
+  .namapro_order_detail{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .img_icon_order_detail img{
+    margin: 2px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+  .del_order{
+    position: relative;
+    /* overflow: hidden; */
+  }
+  .x_order{
+    position: absolute;
+    margin: 10px;
+    /* transform-origin:top left; */
+    top: 0;
+    right: 0;
+  }
+
+  /* --------------------------------------------- Checkout ------------------------------------------------ */
+
+  .body_checkout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .body_checkout form{
+    border-radius: 0;
+    width: 40vw;
+  }
+  .head_form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+    margin: 0;
+    margin-bottom: 2vh;
+    box-shadow: 0px 5px 5px #454444;
+  }
+  .alamat_checkout{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .gbr img{
+    margin: 4px;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 1rem;
+  }
+  .produk_checkout{
+    margin: 2px;
+  }
+  .produk_checkout_inner{
+    /* background-color: #bebebe; */
+    display: flex;
+    margin-top: 2vh;
+    /* justify-content: space-between;
+    align-items: center; */
+    border: 2px solid blue;
+    }
+  .produk_checkout_inner div{
+    display: flex;
+    /* flex-wrap: wrap; */
+  }
+  .ket{
+    justify-content: center;
+    align-items: center;
+  }
+  .pesan_checkout{
+    margin-top: 13px;
+  }
+  .kolom_pesan_checkout{
+    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 4px;
+    padding-inline: 0px;
+    margin: 0px;
+    outline: none;
+    border: none;
+    position: relative;
+    box-sizing: border-box;
+    background-color: rgb(234, 234, 234);
+    font-family: var(--bolt-fonts-text);
+    font-size: 16px;
+    line-height: 24px;
+    min-height: 96px;
+    overflow: hidden;
+    resize: none;
+    flex: 1 1 0%;
+    width: 100%;
+    border-radius: 1rem;
+  }
+  .total_checkout{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .total_checkout span{
+    margin: 15px;
+  }
+  .metode_checkout select{
+    width: 100%;
+    height: 5vh;
+    padding: 3px;
+    border-radius: 0;
+    outline: none;
+  }
+  .no_rek{
+    margin-top: 20px;
+  }
+  .no_rek input{
+    border-radius: 0;
+    width: 100%;
+    margin-top: 13px;
+    height: 3vh;
+  }
+  .buatpesanan_checkout{
+    width: 100%;
+  }
+  .Buat-Pesanan{
+    margin: 20px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8vw;
+    height: 5vh;
+    border: 2px solid rgb(96, 96, 255);
+  }
+
+/* ----------------------------------------KELOLA METODE PEMBAYARAN --------------------------------- */
+
+#container_mp{
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-around;
+  align-items: center;
+}
+.tambahkan_mp_inner form{
+  background-color: none;
+  padding: 0;
+  border-radius: 0 0 0 transparent;
+  box-shadow: none;
+  width: auto;
+}
+.garis_mp{
+  background-color: #000000;
+  width: 1px;
+  height: 50vh;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  margin-right: 10vw;
+}
+.metode_pembayaran{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tambahkan_mp_outer{
+  display: flex;
+}
+.inputinkmp{
+  margin: 7px;
+  display: flex;
+  flex-direction: column;
+}
+.inputinkmp input{
+  border-radius: 0;
+  width: 100%;
+}
+.inputinkmp_cvv input{
+  border-radius: 0;
+}
+.inputinkmp_exp input{
+  border-radius: 0;
+}
+.kelola_mp{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 480px;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 25px;
+  border-radius: 7px;
+  margin: 4vh;
+}
+.kelola_mp div{
+  display: flex;
+  justify-content: center;
+}
+.kelola_mp input{
+  height: 30px;
+  border-radius: 7px;
+    outline: none;
+    border: none;
+  margin: 10px;
+}
+.card_number{
+  width: 90%;
+}
+.card_number div{
+  width: 100%;
+}
+.card_detail{
+  width: 100%;
+}
+.inputinkmp_cvv{
+  width: 21.6%;
+  margin-left: 5%;
+  display: flex;
+  flex-direction: column;
+}
+.inputinkmp_cvv input{
+  width: 100%;
+}
+.inputinkmp_exp{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+.inputinkmp_exp input{
+  width: 100%;
+}
+.card_name{
+  width: 100%;
+}
+.inputinkmp_name{
+  width: 100%;
+  margin-top: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.inputinkmp_name input{
+  border-radius: 7px;
+  width: 82.5%;
+}
