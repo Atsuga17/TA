@@ -1,4 +1,5 @@
 <?php
+    //required & email terdaftar atau tidak
     function validate(&$errors, $field_list, $field_name, $pattern, $errMsg, $id, $table) {
         if (!specCheck($field_list[$field_name], $table, 'email', $id) && ($field_name == 'email')) {
             if ($field_list[$field_name] != show($table, 'email', $id)) {
@@ -29,7 +30,7 @@
             echo $data[$val];
         }
     }
-
+    //validate all
     function validornot(&$errors, $post, $inc, $id, $table) {
         $pattern = array('email' => "/^(([^\<\>()\[\]\\.,;:\s@\"]+(\.[^\<\>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/", 'nama' => "/^[a-zA-Z\s]{3,55}+$/", 'telepon' => "/^(0)([0-9]{10,14})+$/", 'alamat' => "/^[a-zA-Z0-9\s\.,]+$/");
         $msg = array('email' => "email tidak valid", 'nama' => "nama tidak valid", 'telepon' => "nomor telepon tidak valid", 'alamat' => "");

@@ -3,7 +3,7 @@
     require("../database.php");
     session_start();
     if (!isset($_SESSION['user'])) {
-        header("Location: login.php");
+        header("Location: ../index.php");
         exit();
     }
     $brands = getTableData('brand');
@@ -17,7 +17,7 @@
         <title>User - Brand</title>
     </head>
     <body>
-        <?php require '../../assets/inc/user/navbar.inc'; ?>
+        <?php require '../../assets/inc/navbar.inc'; ?>
         <div class="content">
             <h1>DAFTAR BRAND</h1>
             <?php if (count($brands) > 0) { ?>

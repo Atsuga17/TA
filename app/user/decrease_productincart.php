@@ -1,6 +1,10 @@
 <?php
-require_once("../base.php");
-require_once(BASEPATH . "/app/database.php");
-// var_dump($a);
-min_productincart($_GET['pro']);
+	require_once("../base.php");
+	require_once(BASEPATH . "/app/database.php");
+	session_start();
+	if (!isset($_SESSION['user'])) {
+		header("Location: ../index.php");
+		exit();
+	}
+	min_productincart($_GET['pro']);
 ?>

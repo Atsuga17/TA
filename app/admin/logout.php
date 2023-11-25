@@ -6,7 +6,6 @@
 		unset($_SESSION['manager']);
 	}
 	unset($_SESSION['id']);
-	$a = BASEURL."/app/";
-	header("location: ".$a);
+	header("location: ../index.php");
 	exit();
 ?>

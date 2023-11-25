@@ -29,6 +29,8 @@
                 <img class="profile" src="../../fahmi/profile.jpg" alt="profil">
                 <p>Nama : <?php echo $a[0][strtoupper($table)."_NAME"];?></p>
                 <p>Email : <?php echo $a[0][strtoupper($table)."_EMAIL"];?> </p>
+                <p>Email : <?php echo $a[0][strtoupper($table)."_ADDRESS"];?> </p>
+                <p>Email : <?php echo $a[0][strtoupper($table)."_PHONE"];?> </p>
                 <p>Password : ****** </p>
                 <a href="edit_admin.php">Edit Profil</a>
                 <a href="logout.php">Keluar</a>

@@ -1,7 +1,7 @@
 <div class="form-field">
-    <label>Username :</label>
-    <input type="text" name="username" id="username" value="<?php if (isset($_POST['username'])) {valinp($_POST, 'username');} ?>">
-    <small> <?php if (isset($_POST['username'])) {errMsg($errors, $_POST, 'username');} ?> </small>
+    <label>ID :</label>
+    <input type="text" name="id" id="id" value="<?php if (isset($_POST['id'])) {valinp($_POST, 'id');} ?>">
+    <small> <?php if (isset($_POST['id'])) {errMsg($errors, $_POST, 'id');} ?> </small>
 </div>
 <div class="form-field">
     <label>Email :</label>

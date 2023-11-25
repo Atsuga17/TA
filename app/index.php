@@ -7,9 +7,10 @@
 	} elseif (isset($_SESSION['manager'])) {
 		header('location: admin/manager/index.php');
 		exit();
-	}elseif (isset($_SESSION['user'])) {
+	} elseif (isset($_SESSION['user'])) {
 		header('location: user/index.php');
-		exit();}
+		exit();
+	}
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,7 +25,7 @@
 		<h1>Login</h1>
 		<form action="index.php" method="POST">
 			<?php
-				$inc = '../assets/inc/form-login.inc';
+				$inc = '../assets/inc/login.inc';
 				require '../assets/inc/logVal.inc';
 				require_once('base.php');
     			require_once("database.php");

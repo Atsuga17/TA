@@ -188,6 +188,10 @@ input{
 
 /* --------------------------------CARD------------------------------------------ */
 
+.content table, .content tr, .content td {
+    border: 1px black solid;
+}
+
 .content h2 {
     text-align: center;
 }

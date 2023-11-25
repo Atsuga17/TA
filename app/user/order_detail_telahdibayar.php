@@ -1,7 +1,12 @@
 <?php
-require_once("../base.php");
-require_once(BASEPATH . "/app/database.php");
-$orders = getOrderDetailData($_GET['p']);
+    session_start();
+    if (!isset($_SESSION['user'])) {
+        header("Location: ../index.php");
+        exit();
+    }
+    require_once("../base.php");
+    require_once(BASEPATH . "/app/database.php");
+    $orders = getOrderDetailData($_GET['p']);
 ?>
 <!DOCTYPE html>
 <html lang="en">

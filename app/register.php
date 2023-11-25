@@ -16,7 +16,7 @@
 		<form action="register.php" method="POST">
 			<?php
 				$inc = BASEPATH.'/assets/inc/register.inc';
-				$reg =  BASEPATH .'/assets/inc/registerValidation.inc';
+				$reg =  BASEPATH .'/assets/inc/regVal.inc';
 				require $reg;
 	            $errors = array();
 	            if (isset($_POST['submit'])) {

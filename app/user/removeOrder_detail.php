@@ -1,6 +1,10 @@
 <?php
-require_once("../base.php");
-require_once(BASEPATH . "/app/database.php");
-session_start();
-removeOrder_detail($_GET['id']);
+	require_once("../base.php");
+	require_once(BASEPATH . "/app/database.php");
+	session_start();
+	if (!isset($_SESSION['user'])) {
+		header("Location: ../index.php");
+		exit();
+	}
+	removeOrder_detail($_GET['id']);
 ?>

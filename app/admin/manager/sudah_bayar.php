@@ -58,7 +58,7 @@
                             ?>
                             <tr>
                                 <td><?= $order['ORDER_TIME'] ?></td>
-                                <td><?= $order['NAME'] ?></td>
+                                <td><?= $order['USER_NAME'] ?></td>
                                 <td><?= "Rp " . number_format($order["TOTAL"], 0, ',', '.'); ?></td>
                                 <td><?= $stat?></td>
                             </tr>
@@ -80,9 +80,6 @@
                     </table>
                 </div>
             <?php } else {
-                if (isset($_POST['submit'])) {
-                    echo $_POST['start'];
-                }
                 echo "<h2>Belum ada transaksi yang ditambahkan</h1>";
             } ?>
         </div>

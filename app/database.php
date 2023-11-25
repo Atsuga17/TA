@@ -1,58 +1,37 @@
 <?php
 	//register user/administrator/manager
 	function add($post) {
-		if (!isset($post['kunci']) or $post['kunci']=="") {
-				try {
-					$statement = DB->prepare("INSERT IGNORE INTO user (USER_ID, EMAIL, NAME, PHONE, ADDRESS, PASSWORD) VALUES (:uname, :em, :name, :ph, :add, SHA2(:pass, 0))");
-					$statement->bindValue(':uname', htmlspecialchars($post['username']));
-					$statement->bindValue(':em', $post['email']);
-					$statement->bindValue(':name', htmlspecialchars($post['nama']));
-					$statement->bindValue(':ph', $post['telepon']);
-					$statement->bindValue(':add', htmlspecialchars($post['alamat']));
-					$statement->bindValue(':pass', $post['password']);
-					$statement->execute();
-				} catch (PDOException $err) {
-					echo $err->getMessage();
-				}
+		if ($post['kunci'] == 'Admin_99') {
+			$table = 'admin';
+		} elseif ($post['kunci'] == 'Manager_99') {
+			$table = 'manager';
 		} else {
-			try {
-				if ($post['kunci'] == 'Manager_99') {
-					$table = 'manager';
-					$key = 'MANAGER';
-				} else {
-					$table = 'admin';
-					$key = 'ADMIN';
-				}
-				$statement = DB->prepare("INSERT IGNORE INTO $table (".$key."_ID, ".$key."_EMAIL, ".$key."_NAME, ".$key."_PHONE,".$key."_ADDRESS,".$key."_PASSWORD, ".$key."_PASS) VALUES (:uname, :em, :name,:ph,:add, SHA2(:pass, 0), SHA2(:ky, 0))");
-				$statement->bindValue(':uname', htmlspecialchars($post['username']));
-				$statement->bindValue(':em', $post['email']);
-				$statement->bindValue(':name', htmlspecialchars($post['nama']));
-				$statement->bindValue(':ph', $post['telepon']);
-				$statement->bindValue(':add', htmlspecialchars($post['alamat']));
-				$statement->bindValue(':pass', $post['password']);
-				$statement->bindValue(':ky', $post['kunci']);
-				$statement->execute();
-			} catch (PDOException $err) {
-				echo $err->getMessage();
-			}
+			$table = 'user';
+		}
+		$key = strtoupper($table);
+		try {
+			$statement = DB->prepare("INSERT IGNORE INTO $table (".$key."_ID, ".$key."_EMAIL, ".$key."_NAME, ".$key."_PHONE,".$key."_ADDRESS,".$key."_PASSWORD, ".$key."_PASS) VALUES (:id, :em, :name,:ph,:add, SHA2(:pass, 0), SHA2(:ky, 0))");
+			$statement->bindValue(':id', htmlspecialchars($post['id']));
+			$statement->bindValue(':em', $post['email']);
+			$statement->bindValue(':name', htmlspecialchars($post['nama']));
+			$statement->bindValue(':ph', $post['telepon']);
+			$statement->bindValue(':add', htmlspecialchars($post['alamat']));
+			$statement->bindValue(':pass', $post['password']);
+			$statement->bindValue(':ky', $post['kunci']);
+			$statement->execute();
+		} catch (PDOException $err) {
+			echo $err->getMessage();
 		}
 	}
 
 	//edit profil user/administrator/manager
 	function edit(&$errors, $table, $post, $id) {
 		try {
-			if ($table == 'user') {
-				$statement = DB->prepare("UPDATE $table SET EMAIL = :em, NAME = :name, ADDRESS = :add, PHONE = :ph WHERE ".strtoupper($table)."_ID = '$id'");
-				$statement->bindValue(':em', $post['email']);
-				$statement->bindValue(':name', htmlspecialchars($post['nama']));
-				$statement->bindValue(':ph', $post['telepon']);
-				$statement->bindValue(':add', htmlspecialchars($post['alamat']));
-
-			} else {
-				$statement = DB->prepare("UPDATE $table SET ".strtoupper($table)."_EMAIL=:em, ".strtoupper($table)."_NAME=:name WHERE ".strtoupper($table)."_ID= '$id'");
-				$statement->bindValue(':em', $post['email']);
-				$statement->bindValue(':name', htmlspecialchars($post['nama']));
-			}
+			$statement = DB->prepare("UPDATE $table SET ".strtoupper($table)."_EMAIL = :em, ".strtoupper($table)."_NAME = :name, ".strtoupper($table)."_ADDRESS = :add, ".strtoupper($table)."_PHONE = :ph WHERE ".strtoupper($table)."_ID = '$id'");
+			$statement->bindValue(':em', $post['email']);
+			$statement->bindValue(':name', htmlspecialchars($post['nama']));
+			$statement->bindValue(':ph', $post['telepon']);
+			$statement->bindValue(':add', htmlspecialchars($post['alamat']));
 			$statement->execute();
 		} catch (PDOException $err) {
 			echo $err->getMessage();
@@ -100,32 +79,17 @@
 
 	//cek email/username dalam database agar tidak terjadi duplikasi pada email/username
 	function db_check($field_list, $field_name) {
-		if (!isset($field_list['kunci'])) {
-			$table = 'user';
-			if ($field_name == "email") {
-				$key = 'EMAIL';
-			} else {
-				$key = 'USER_ID';
-			}
+		if ($field_list['kunci'] == 'Admin_99') {
+			$table = 'admin';
+		} elseif ($field_list['kunci'] == 'Manager_99') {
+			$table = 'manager';
 		} else {
-			if ($field_list['kunci'] == 'Admin_99') {
-				$table = 'admin';
-				$key = 'ADMIN';
-			} else {
-				$table = 'manager';
-				$key = 'MANAGER';
-			}
-			if ($field_name == "email") {
-				$key = $key.'_EMAIL';
-			} else {
-				$key =  $key.'_ID';
-			}
-
+			$table = 'user';
 		}
-		$statement = DB->prepare("SELECT $key FROM $table");
+		$statement = DB->prepare("SELECT ".strtoupper($table)."_".strtoupper($field_name)." FROM $table");
 		$statement->execute();
 		foreach ($statement as $row) {
-			if ($field_list[$field_name] == $row[$key]) {
+			if ($field_list[$field_name] == $row[strtoupper($table)."_".strtoupper($field_name)]) {
 				return false;
 			}
 		}
@@ -134,11 +98,7 @@
 
     //cek ketersediaan email saat edit profil
     function specCheck($data ,$table, $name, $id) {
-    	if ($table == 'user') {
-    		$key = strtoupper($name);
-    	} else {
-    		$key = strtoupper($table)."_".strtoupper($name);
-    	}
+    	$key = strtoupper($table)."_".strtoupper($name);
     	$stm = DB->prepare("SELECT $key FROM $table");
     	$stm->execute();
     	foreach ($stm as $row) {
@@ -268,57 +228,48 @@
 
 	//mencocokkan password dan username saat login
     function check($field_list) {
+    	if ($field_list['kunci'] == 'Admin_99') {
+    		$table = 'admin';
+    	} elseif ($field_list['kunci'] == 'Manager_99') {
+    		$table = 'manager';
+    	} else {
+    		$table = 'user';
+    	}
+    	$key = strtoupper($table);
     	try {
-    		if (!isset($field_list['kunci'])) {
-	    		$stm = DB->prepare("SELECT * FROM user WHERE USER_ID = :uname and PASSWORD = SHA2(:pass, 0)");
-				$stm->bindValue(':uname', $field_list['username']);
-				$stm->bindValue(':pass', $field_list['password']);
-	    	} else {
-	    		if ($field_list['kunci'] == 'Admin_99') {
-	    			$table = 'admin';
-	    			$key = 'ADMIN';
-	    		} else {
-	    			$table = 'manager';
-	    			$key = 'MANAGER';
-	    		}
-	    		$stm = DB->prepare("SELECT * FROM $table WHERE ".$key."_ID = :uname and ".$key."_PASSWORD = SHA2(:pw, 0) and ".$key."_PASS = SHA2(:pass, 0)");
-				$stm->bindValue(':uname', $field_list['username']);
-				$stm->bindValue(':pw', $field_list['password']);
-				$stm->bindValue(':pass', $field_list['kunci']);
-	    	}
-	    	$stm->execute();
+    		$stm = DB->prepare("SELECT * FROM $table WHERE ".$key."_ID = :uname and ".$key."_PASSWORD = SHA2(:pw, 0) and ".$key."_PASS = SHA2(:pass, 0)");
+			$stm->bindValue(':uname', $field_list['id']);
+			$stm->bindValue(':pw', $field_list['password']);
+			$stm->bindValue(':pass', $field_list['kunci']);
+			$stm->execute();
 			return $stm->rowCount() > 0;
-    	} catch(PDOException $err) {
-			echo $err->getMessage();
+	    } catch(PDOException $err) {
+	    	echo $err->getMessage();
 		}
     }
 
     //menampilkan data kolom spesifik dari suatu baris tabel berdasarkan id
     function show($table, $name, $id) {
-    	if ($table == 'user') {
-    		$stm = DB->query("SELECT ".strtoupper($name)." FROM $table WHERE ".strtoupper($table)."_ID = '$id'");
-    		$db = $stm->fetchAll(PDO::FETCH_ASSOC);
-    		return $db[0][strtoupper($name)];
-    	} else {
+    	try {
     		$stm = DB->query("SELECT ".strtoupper($table)."_".strtoupper($name)." FROM $table WHERE ".strtoupper($table)."_ID = '$id'");
-    		$db = $stm->fetchAll(PDO::FETCH_ASSOC);
-    		return $db[0][strtoupper($table)."_".strtoupper($name)];
-    	}
+	    	$db = $stm->fetchAll(PDO::FETCH_ASSOC);
+	    	return $db[0][strtoupper($table)."_".strtoupper($name)];
+	    } catch(PDOException $err) {
+	    	echo $err->getMessage();
+		}
     }
 
     //validasi password saat edit profil
     function edit_check($field_list,  $table, $id) {
-    	if ($table == 'user') {
-    		$stm = DB->prepare("SELECT * FROM $table WHERE USER_ID= :id and PASSWORD = SHA2(:pass, 0)");
-    		$stm->bindValue(':id', "'$id'");
-			$stm->bindValue(':pass', $field_list['old']);
-    	} else {
+    	try {
     		$stm = DB->prepare("SELECT * FROM $table WHERE ".strtoupper($table)."_ID = :id and ".strtoupper($table)."_PASSWORD = SHA2(:pass, 0)");
     		$stm->bindValue(':id', "'$id'");
-			$stm->bindValue(':pass', $field_list['old']);	
-    	}
-    	$stm->execute();
-		return $stm->rowCount() > 0;
+			$stm->bindValue(':pass', $field_list['old']);
+			$stm->execute();
+			return $stm->rowCount() > 0;
+    	} catch (PDOException $err) {
+	    	echo $err->getMessage();
+		}
     }
 	//ambil list brand
 	function getBrands(){
@@ -341,16 +292,40 @@
             echo $err->getMessage();
         }
 	}
-	function getProductfromID($pid){
+	
+	//ambil 2 data dari tabel berbeda
+	function getTwoTable($table1, $table2){
         try {
-            $statement =DB->prepare("SELECT * FROM product WHERE PRODUCT_ID = :pid");
-			$statement->bindValue(":pid",$pid);
+            $statement = DB->prepare("SELECT * FROM `$table1` JOIN `$table2` ON ".$table2.".".strtoupper($table2)."_ID = ".$table1.".".strtoupper($table2)."_ID");
             $statement->execute();
-            return $statement->fetch(PDO::FETCH_ASSOC);
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $err) {
             echo $err->getMessage();
         }
 	}
+
+	//ambil data order sesuai status pembayaran
+	function getSpecOrderDetail($table1, $table2, $con){
+        try {
+            $statement = DB->prepare("SELECT * FROM `$table1` JOIN `$table2` ON ".$table2.".".strtoupper($table2)."_ID = ".$table1.".".strtoupper($table2)."_ID WHERE PAYMENT_STATUS = $con");
+            $statement->execute();
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $err) {
+            echo $err->getMessage();
+        }
+	}
+
+	//filter data sesuai range tanggal order
+	function getSpecDateOrderDetail($table1, $table2, $con, $start, $end){
+        try {
+            $statement = DB->prepare("SELECT * FROM `$table1` JOIN `$table2` ON ".$table2.".".strtoupper($table2)."_ID = ".$table1.".".strtoupper($table2)."_ID WHERE PAYMENT_STATUS = $con AND (ORDER_TIME BETWEEN '$start' AND '$end')");
+            $statement->execute();
+            return $statement->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $err) {
+            echo $err->getMessage();
+        }
+	}
+
 
     //filter produk produk dari brand tertentu berdasae id brand
     function getBrandProduct($id){

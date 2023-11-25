@@ -30,16 +30,16 @@
                                 <?= "Usename : ".$cust["USER_ID"] ?>
                             </div>
                             <div class="cardInfo">
-                                <?= "Nama : ".ucwords($cust["NAME"]) ?>
+                                <?= "Nama : ".ucwords($cust["USER_NAME"]) ?>
                             </div>
                             <div class="cardInfo">
-                                <?= "Email : ".ucwords($cust["EMAIL"]) ?>
+                                <?= "Email : ".ucwords($cust["USER_EMAIL"]) ?>
                             </div>
                             <div class="cardInfo">
-                                <?= "No. Tlp : ".ucwords($cust["PHONE"]) ?>
+                                <?= "No. Tlp : ".ucwords($cust["USER_PHONE"]) ?>
                             </div>
                             <div class="cardInfo">
-                                <?= "Alamat : ".ucwords($cust["ADDRESS"]) ?>
+                                <?= "Alamat : ".ucwords($cust["USER_ADDRESS"]) ?>
                             </div>
                         </div>
                     <?php endforeach; ?>

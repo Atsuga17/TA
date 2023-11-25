@@ -1,12 +1,15 @@
 <?php
 	session_start();
 	if (!isset($_SESSION['user'])) {
-		header("Location: login.php");
+		header("Location: ../index.php");
 		exit();
 	}
     require('../base.php');
     require("../database.php");
     $products = getProductwithBrands();
+    if (isset($_GET['prod'])) {
+        $products = getBrandProduct($_GET['prod']);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">

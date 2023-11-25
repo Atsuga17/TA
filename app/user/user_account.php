@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	if (!isset($_SESSION['user'])) {
-		header("Location: login.php");
+		header("Location: ../index.php");
 		exit();
 	}
     require('../base.php');
@@ -61,15 +61,15 @@
             <?php $a = getAllData('user', $_SESSION["id"]);?>
             <div class="user_content">
                 <img class="profile" src="../../fahmi/profile.jpg">
-                <p>Nama : <?php echo $a[0]["NAME"];?></p>
-                <p>Email : <?php echo $a[0]["EMAIL"];?> </p>
-                <p>Alamat : <?php echo $a[0]["ADDRESS"];?> </p>
-                <p>Nomor Telepon : <?php echo $a[0]["PHONE"];?> </p>
+                <p>Nama : <?php echo $a[0]["USER_NAME"];?></p>
+                <p>Email : <?php echo $a[0]["USER_EMAIL"];?> </p>
+                <p>Alamat : <?php echo $a[0]["USER_ADDRESS"];?> </p>
+                <p>Nomor Telepon : <?php echo $a[0]["USER_PHONE"];?> </p>
                 <p>Password : ****** </p>
                 <a href="edit.php">Edit Profil</a>
                 <a href="logout.php">Keluar</a>
             </div>
         </div>
-        <?php include("../../assets/inc/user/footer.inc");?>
+        <?php include("../../assets/inc/footer.inc");?>
     </body>
 </html>

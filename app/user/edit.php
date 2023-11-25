@@ -3,7 +3,7 @@
 	require_once('../database.php');
 	session_start();
 	if (!isset($_SESSION['user'])) {
-		header("Location: login.php");
+		header("Location: ../index.php");
 		exit();
 	}
 ?>
@@ -43,6 +43,6 @@
 			</form>
 		</div>
 	</div>
-	<?php include("../../assets/inc/user/footer.inc");?>
+	<?php include("../../assets/inc/footer.inc");?>
 </body>
 </html>
