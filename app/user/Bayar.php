@@ -7,5 +7,5 @@
 		exit();
 	}
 	$a = $_SESSION['id'];
-	BayarOrder($a, $_POST["metode"], $_POST["rekening"],$_POST["productid"]);
+	BayarOrder($_POST["metode"],$_POST["productid"]);
 ?>

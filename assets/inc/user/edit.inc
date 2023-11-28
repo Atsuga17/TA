@@ -20,5 +20,5 @@
 </div>
 <div class="form-field">
     <input type="submit" name="submit" value="Edit Profil">
-    <a href="user_account.php">Batal</a>
+    <a href="user_account.php">Kembali</a>
 </div>

@@ -4,6 +4,7 @@
 		header("Location: ../index.php");
 		exit();
 	}
+    $alertsuccess="";
     require('../base.php');
     require("../database.php");
     $payment = showUserPaymentData($_SESSION['id']);
@@ -44,13 +45,10 @@
                         }
                     
                         // Check if there are errors
-                        if (!empty($error)) {
-                            // Handle errors here (display or log)
-                             // For example, printing errors for demonstration
-                        } else {
+                        if (empty($error)){
                             // Proceed with the form processing since there are no errors
-                            // Perform further actions or redirection here
-                            echo "Form submitted successfully!";
+                            $alertsuccess = "Form submitted successfully!";
+                            AddPaymentMethod($_POST["BankName"], $_POST["rekening"], $_SESSION['id']);
                         }
                     }
                     
@@ -94,28 +92,30 @@
         <h3>Tambahkan Metode Pembayaran :</h3>
             <form action="Kelola_Metode_Pembayaran.php" method="post">
             <div class="kelola_mp">
+                <div class="bankname_mp">
+                    <label for="BankName">Pilih Metode :</label>
+                    <select name="BankName">
+                        <option value="" select disabled></option>
+                        <option value="Mandiri">Bank Mandiri</option>
+                        <option value="Bank Rakyat Indonesia (BRI)">BRI</option>
+                        <option value="Bank Negara Indonesia (BNI)">BNI</option>
+                        <option value="Bank Central Asia (BCA)">BCA</option>
+                        <option value="Bank Mega">Bank Mega</option>
+                        <option value="Bank Mega">DANA</option>
+                        <option value="Bank Mega">OVO</option>
+                        <option value="Bank Mega">GOJEK</option>
+                    </select>
+                </div>
                 <div class="card_number">
-                    <div class="inputinkmp">
                         <input placeholder="Card Number" type="text" name="rekening"><small><?php echo $error["rekening"] ?? ''?></small>
-                    </div>
                 </div>
-                <div class="card_detail">
-                    <div class="inputinkmp_exp">
-                        <input placeholder="Expiration (MM/YY)" type="text" name="exp"><small><?php echo $error["exp"] ?? ''?></small>
-                    </div>
-                    <div class="inputinkmp_cvv">
-                        <input placeholder="CVV" type="text" name="CVV"><small><?php echo $error["CVV"] ?? ''?></small>
-                    </div>
-                </div>
-                <div class="card_name">
-                    <div class="inputinkmp_name">
-                        <input placeholder="Name On Card" type="text" name="nama"><small><?php echo $error["nama"] ?? ''?></small>
-                    </div>
-                </div>
-                <input class="inputinkmp" type="submit" name="submit" value="Tambahkan">
-        </div>
+                <input class="submitmetode" type="submit" name="submit" value="Tambah">
+            </div>
         </form>
-    </div>
+        <div class="alert">
+            <?= $alertsuccess ?>
+        </div>
+        </div>
     </div>
     </div>
     <?php include("../../assets/inc/footer.inc");?>

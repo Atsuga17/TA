@@ -6,8 +6,7 @@
 	}
     require('../base.php');
     require("../database.php");
-    $listpesanan = getOrderList($_SESSION['id']);
-    $bank = getPaymentData($_SESSION['id']);
+    $listpesanan = getOrderandPayment($_SESSION['id']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +24,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body class="BB_body">
-	<?php include("../../assets/inc/navbar.inc") ?>
+	<?php include("../../assets/inc/navbar.inc"); if (count($listpesanan)>0){?>
 
 	<div class="table_order">
     <?php foreach($listpesanan as $order){ if ($order["PAYMENT_STATUS"] == 1){?>
@@ -50,34 +49,34 @@
 				</td>
 				<td>
 					<div class="order-time">
-					<?= $order["ORDER_TIME"] ?>
+					<?= $order["ORDER_TIME"]; ?>
 					</div>
 				</td>
 				<td>
 					<div class="total">
-					<?= $order["TOTAL"] ?>
+					<?= $order["TOTAL"]; ?>
 					</div>
 				</td>
                 <td>
                     <div class="metode_TB">
-                        <?= $bank["BANK_NAME"]?>
+                        <?= $order["BANK_NAME"];?>
                     </div>
                 </td>
                 <td>
                     <div class="norek_TB">
-                        <?= $bank["NOMOR_REKENING"]?>
+                        <?= $order["NOMOR_REKENING"];?>
                     </div>
                 </td>
 				<td>
-					<a href="order_detail_telahdibayar.php?p=<?= $order["ORDER_ID"] ?>">
+					<a href="order_detail_telahdibayar.php?p=<?= $order["ORDER_ID"]; ?>">
 						Detail
 					</a>
 				</td>
-				<td class="del_order"><a class="x_order" href="removeOrder.php?id=<?= $order["ORDER_ID"] ?>">&#x292c;</a></td>
+				<td class="del_order"><a class="x_order" href="removeOrder.php?id=<?= $order["ORDER_ID"]; ?>">&#x292c;</a></td>
 			</tr>
 		</table>
-		<?php }else{}?>
-	<?php } ?>
+		<?php }?>
+	<?php }} ?>
 	</div>
 
 	<?php include("../../assets/inc/footer.inc");?>

@@ -42,6 +42,7 @@
                 </div>
                 <nav class="rightnavbar">
                     <ul>
+                        <li><a href="index.php">Beranda</a></li>
                         <li><a href="brand.php">Brands</a>
                             <div class="dropdown-content">
                                 <?php foreach($brands as $brand){?>

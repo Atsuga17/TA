@@ -40,21 +40,21 @@
                     Total
                 </th>
             </tr>
-            <?php foreach($orders as $order){ $products = getProductfromID($order["PRODUCT_ID"]);?>
+            <?php foreach($orders as $order){ $products = getAllData("product",$order["PRODUCT_ID"]);?>
             <tr class="row_order_detail">
                 <td>
                     <div class="img_order_detail">
                         <div class="img_icon_order_detail">
-                            <img src="<?= BASEURL; ?>/assets/images/products/<?= $products["PRODUCT_IMG"]; ?>">
+                            <img src="<?= BASEURL; ?>/assets/images/products/<?= $products[0]["PRODUCT_IMG"]; ?>">
                         </div>
                         <div class="namapro_order_detail">
-                            <?= $products["PRODUCT_NAME"]?>
+                            <?= $products[0]["PRODUCT_NAME"]?>
                         </div>
                     </div>
                 </td>
                 <td>
                     <div class="price_order_detail">
-                        <?= $products["PRODUCT_PRICE"]?>
+                        <?= $products[0]["PRODUCT_PRICE"]?>
                     </div>
                 </td>
                 <td>
@@ -64,7 +64,7 @@
                 </td>
                 <td>
                     <div class="total_order_detail">
-                        <?php $sum = $products["PRODUCT_PRICE"]*$order["QTY"]?>
+                        <?php $sum = $products[0]["PRODUCT_PRICE"]*$order["QTY"]?>
                         <?= "Rp " . number_format($sum, 0, ',', '.'); ?>
                     </div>
                 </td>

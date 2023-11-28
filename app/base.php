@@ -1,6 +1,6 @@
 <?php
-	define("BASEURL", "http://localhost/TA");
-	define("BASEPATH", $_SERVER["DOCUMENT_ROOT"]."/TA");
+	define("BASEURL", "http://localhost/TA/TA");
+	define("BASEPATH", $_SERVER["DOCUMENT_ROOT"]."/TA/TA");
 	function connect($host, $db, $user, $password) {
 			$dsn = "mysql:host=$host;dbname=$db;charset=UTF8";
 		try {

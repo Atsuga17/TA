@@ -16,8 +16,8 @@
 	<title>Edit - Admin</title>
 </head>
 <body>
-	<?php include("../../assets/inc/user/navbar.inc") ?>
-	<div class="content">
+	<?php include(BASEPATH."/assets/inc/navbar.inc") ?>
+	<div class="content_edit">
 		<div class="form-container">
 			<h1>Edit Profil</h1>
 			<form action="edit.php" method="POST">

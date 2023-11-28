@@ -592,13 +592,11 @@
             echo $err->getMessage();
         }
 	}
-	function BayarOrder($user,$bank,$rek,$orderid){
+	function BayarOrder($payment, $orderid){
 		try{
-			$statement = DB->prepare("INSERT INTO payment_method (USER_ID,BANK_NAME,NOMOR_REKENING) 
-			VALUES (:user,:bank,:rek)");
-			$statement->bindValue(':user',$user);
-			$statement->bindValue(':bank',$bank);
-			$statement->bindValue(':rek',$rek);
+			$statement = DB->prepare("UPDATE `order` SET PAYMENT_METHOD_ID = :payid WHERE ORDER_ID = :id");
+			$statement->bindValue(':id',$orderid);
+			$statement->bindValue(':payid',$payment);
 			$statement->execute();
 
 			verifikasiorder($orderid);
@@ -622,6 +620,35 @@
 			$statement->bindValue(":id",$ID);
 			$statement->execute();
 			return $statement->fetch(PDO::FETCH_ASSOC);
+		}catch (PDOException $err) {
+            echo $err->getMessage();
+        }
+	}
+	function getOrderandPayment($user){
+		try{
+			$statement = DB->prepare("SELECT pm.PAYMENT_METHOD_ID, ord.ORDER_ID, ord.USER_ID, ord.TOTAL,ord.ORDER_TIME, ord.PAYMENT_STATUS, pm.BANK_NAME, pm.NOMOR_REKENING 
+			FROM payment_method pm 
+			JOIN `order` ord ON pm.PAYMENT_METHOD_ID = ord.PAYMENT_METHOD_ID
+			WHERE ord.USER_ID = :user");
+			$statement->bindValue(":user",$user);
+			$statement->execute();
+			return $statement->fetchAll(PDO::FETCH_ASSOC);
+		}catch (PDOException $err) {
+            echo $err->getMessage();
+        }
+	}
+
+	// ---------------------------------------------------- PAYMENT_METHOD ------------------------------------------------------
+
+	function AddPaymentMethod($name, $rek, $user){
+		try{
+			$statement = DB->prepare("INSERT INTO payment_method (BANK_NAME, NOMOR_REKENING, USER_ID)
+			VALUES (:Bank_Name, :rek, :user)");
+			$statement->bindValue(":user",$user);
+			$statement->bindValue(":rek",$rek);
+			$statement->bindValue(":Bank_Name",$name);
+			$statement->execute();
+
 		}catch (PDOException $err) {
             echo $err->getMessage();
         }
