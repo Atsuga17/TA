@@ -6,7 +6,7 @@
     }
     require_once("../base.php");
     require_once(BASEPATH . "/app/database.php");
-    $orders = getOrderDetailData($_GET['p']);
+    $orders = getTableData("'order'", $_GET['p']);
 ?>
 <!DOCTYPE html>
 <html lang="en">

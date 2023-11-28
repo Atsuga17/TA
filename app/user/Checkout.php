@@ -41,6 +41,7 @@
             <label for="alamat">Alamat Pengiriman : </label>
             <div class="alamat">
                 <?= $user[0]["USER_ADDRESS"];?>
+                <?= $user[0]["USER_ADDRESS"];?>
             </div>
         </div>
         <div class="produk_checkout">
@@ -48,8 +49,11 @@
                 <div class="produk_checkout_inner">
                     <div class="gbr">
                         <img src="<?= BASEURL; ?>/assets/images/products/<?= $product[0]["PRODUCT_IMG"]; ?>">
+                        <img src="<?= BASEURL; ?>/assets/images/products/<?= $product[0]["PRODUCT_IMG"]; ?>">
                     </div>
                     <div class="ket">
+                        <?= $product[0]["PRODUCT_NAME"]?>
+                        <?= $product[0]["PRODUCT_PRICE"]?>
                         <?= $product[0]["PRODUCT_NAME"]?>
                         <?= $product[0]["PRODUCT_PRICE"]?>
                     </div>
@@ -62,6 +66,7 @@
         </div>
         <div class="total_checkout">
             <?php
+                $total + $total = $product[0]["PRODUCT_PRICE"];
                 $total + $total = $product[0]["PRODUCT_PRICE"];
             ?>
             <span>Total</span><span><?= $total?></span>

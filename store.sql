@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Nov 2023 pada 07.20
+-- Waktu pembuatan: 27 Nov 2023 pada 07.37
 -- Versi server: 10.4.24-MariaDB
 -- Versi PHP: 8.1.6
 
@@ -28,16 +28,22 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `ADMIN_ID` varchar(8) NOT NULL,
+  `ADMIN_ID` varchar(12) NOT NULL,
   `ADMIN_NAME` varchar(50) NOT NULL,
   `ADMIN_EMAIL` varchar(255) NOT NULL,
-  `ADMIN_PASS` text NOT NULL,
-  `ADMIN_PASSWORD` text NOT NULL
+  `ADMIN_ADDRESS` varchar(255) NOT NULL,
+  `ADMIN_PHONE` text NOT NULL,
+  `ADMIN_PASSWORD` text NOT NULL,
+  `ADMIN_PASS` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `admin`
 --
+
+INSERT INTO `admin` (`ADMIN_ID`, `ADMIN_NAME`, `ADMIN_EMAIL`, `ADMIN_ADDRESS`, `ADMIN_PHONE`, `ADMIN_PASSWORD`, `ADMIN_PASS`) VALUES
+('atsuga17', 'Moh Kurnia Agusta', 'kurniaagusta50@gmail.com', 'Jotosanur', '089530456940', '565d29a25fb743299f5cc556cde40c4227943d0b5c895abdb4998cd48062e24a', '73bf498624a0011d6e08f0403ad0d0234e174e215e886bdae4bfbbfc80090be2');
+
 -- --------------------------------------------------------
 
 --
@@ -52,7 +58,8 @@ CREATE TABLE `brand` (
 --
 -- Dumping data untuk tabel `brand`
 --
-- --------------------------------------------------------
+
+-- --------------------------------------------------------
 
 --
 -- Struktur dari tabel `cart`
@@ -82,16 +89,22 @@ CREATE TABLE `cart_detail` (
 --
 
 CREATE TABLE `manager` (
-  `MANAGER_ID` varchar(8) NOT NULL,
+  `MANAGER_ID` varchar(12) NOT NULL,
   `MANAGER_NAME` varchar(50) NOT NULL,
   `MANAGER_EMAIL` varchar(255) NOT NULL,
-  `MANAGER_PASS` text NOT NULL,
-  `MANAGER_PASSWORD` text NOT NULL
+  `MANAGER_ADDRESS` varchar(255) NOT NULL,
+  `MANAGER_PHONE` text NOT NULL,
+  `MANAGER_PASSWORD` text NOT NULL,
+  `MANAGER_PASS` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `manager`
 --
+
+INSERT INTO `manager` (`MANAGER_ID`, `MANAGER_NAME`, `MANAGER_EMAIL`, `MANAGER_ADDRESS`, `MANAGER_PHONE`, `MANAGER_PASSWORD`, `MANAGER_PASS`) VALUES
+('atsuga17', 'Moh Kurnia Agusta', 'kurniaagusta50@gmail.com', 'Jotosanur', '089530456940', '565d29a25fb743299f5cc556cde40c4227943d0b5c895abdb4998cd48062e24a', '012715bb3a6f17e520b3b4b0cd7c7eaee6de733383278cc0844343c6f57d6e48');
+
 -- --------------------------------------------------------
 
 --
@@ -104,13 +117,13 @@ CREATE TABLE `order` (
   `ORDER_TIME` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `TOTAL` bigint(20) NOT NULL,
   `PAYMENT_STATUS` tinyint(1) NOT NULL DEFAULT 0,
-  `PAYMENT_METHOD` varchar(50) DEFAULT NULL
+  `PAYMENT_METHOD_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `order`
 --
-- --------------------------------------------------------
+-- --------------------------------------------------------
 
 --
 -- Struktur dari tabel `order_detail`
@@ -126,6 +139,7 @@ CREATE TABLE `order_detail` (
 --
 -- Dumping data untuk tabel `order_detail`
 --
+
 -- --------------------------------------------------------
 
 --
@@ -133,15 +147,11 @@ CREATE TABLE `order_detail` (
 --
 
 CREATE TABLE `payment_method` (
-  `PAYMENT_ID` int(11) NOT NULL,
+  `PAYMENT_METHOD_ID` int(11) NOT NULL,
   `USER_ID` varchar(12) NOT NULL,
   `BANK_NAME` varchar(100) NOT NULL,
   `NOMOR_REKENING` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `payment_method`
---
 
 -- --------------------------------------------------------
 
@@ -164,6 +174,7 @@ CREATE TABLE `product` (
 --
 -- Dumping data untuk tabel `product`
 --
+
 -- --------------------------------------------------------
 
 --
@@ -172,11 +183,12 @@ CREATE TABLE `product` (
 
 CREATE TABLE `user` (
   `USER_ID` varchar(12) NOT NULL,
-  `EMAIL` varchar(255) NOT NULL,
-  `NAME` varchar(50) NOT NULL,
-  `ADDRESS` varchar(255) NOT NULL,
-  `PASSWORD` text NOT NULL,
-  `PHONE` text NOT NULL
+  `USER_EMAIL` varchar(255) NOT NULL,
+  `USER_NAME` varchar(50) NOT NULL,
+  `USER_ADDRESS` varchar(255) NOT NULL,
+  `USER_PHONE` text NOT NULL,
+  `USER_PASSWORD` text NOT NULL,
+  `USER_PASS` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -224,7 +236,8 @@ ALTER TABLE `manager`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`ORDER_ID`),
-  ADD KEY `FK_RELATIONSHIP_2` (`USER_ID`);
+  ADD KEY `FK_RELATIONSHIP_2` (`USER_ID`),
+  ADD KEY `FK_RELATIONSHIP_9` (`PAYMENT_METHOD_ID`);
 
 --
 -- Indeks untuk tabel `order_detail`
@@ -238,7 +251,7 @@ ALTER TABLE `order_detail`
 -- Indeks untuk tabel `payment_method`
 --
 ALTER TABLE `payment_method`
-  ADD PRIMARY KEY (`PAYMENT_ID`),
+  ADD PRIMARY KEY (`PAYMENT_METHOD_ID`),
   ADD KEY `user memiliki metode pembayaran` (`USER_ID`);
 
 --
@@ -286,7 +299,7 @@ ALTER TABLE `order_detail`
 -- AUTO_INCREMENT untuk tabel `payment_method`
 --
 ALTER TABLE `payment_method`
-  MODIFY `PAYMENT_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `PAYMENT_METHOD_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -309,7 +322,8 @@ ALTER TABLE `cart_detail`
 -- Ketidakleluasaan untuk tabel `order`
 --
 ALTER TABLE `order`
-  ADD CONSTRAINT `FK_RELATIONSHIP_2` FOREIGN KEY (`USER_ID`) REFERENCES `user` (`USER_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `FK_RELATIONSHIP_2` FOREIGN KEY (`USER_ID`) REFERENCES `user` (`USER_ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `FK_RELATIONSHIP_9` FOREIGN KEY (`PAYMENT_METHOD_ID`) REFERENCES `payment_method` (`PAYMENT_METHOD_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `order_detail`
