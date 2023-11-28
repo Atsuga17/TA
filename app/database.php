@@ -618,7 +618,7 @@
 	}
 	function getPaymentData($ID){
 		try{
-			$statement = DB->prepare("SELECT * FROM payment_method WHERE PAYMENT_METHOD_ID = :id");
+			$statement = DB->prepare("SELECT * FROM payment_method WHERE USER_ID = :id");
 			$statement->bindValue(":id",$ID);
 			$statement->execute();
 			return $statement->fetch(PDO::FETCH_ASSOC);
