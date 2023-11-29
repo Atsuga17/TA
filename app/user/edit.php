@@ -16,7 +16,7 @@
 	<title>Edit - Admin</title>
 </head>
 <body>
-	<?php include("../../assets/inc/user/navbar.inc") ?>
+	<?php include("../../assets/inc/navbar.inc") ?>
 	<div class="content">
 		<div class="form-container">
 			<h1>Edit Profil</h1>
