@@ -27,5 +27,5 @@
             $back = 'manager';
         }
     ?>
-    <a href="admin_account.php">Batal</a>
+    <a href="admin_account.php">Kembali</a>
 </div>

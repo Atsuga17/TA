@@ -365,6 +365,9 @@ a{text-decoration: none;}
 .user_account_container h3{
     margin: 20px;
 }
+.user_account_container{
+  margin-bottom: 10vh;
+}
 .pesanan_user div{
     margin: 10px;
 }
@@ -628,13 +631,22 @@ a{text-decoration: none;}
   }
   .head_form{
     display: flex;
-    justify-content: center;
+    /* justify-content: space-around; */
     align-items: center;
     width: 100%;
     height: 100px;
     margin: 0;
     margin-bottom: 2vh;
     box-shadow: 0px 5px 5px #454444;
+  }
+  .head_form h3{
+    align-self: center;
+    position: absolute;
+    margin-left: 47%;
+  }
+  .head_form a{
+    float: left;
+    margin-left: 20px;
   }
   .alamat_checkout{
     display: flex;
@@ -707,6 +719,9 @@ a{text-decoration: none;}
     border-radius: 0;
     outline: none;
   }
+  .metodecheckoutopt{
+    border-radius: 0;
+  }
   .no_rek{
     margin-top: 20px;
   }
@@ -745,6 +760,9 @@ a{text-decoration: none;}
   box-shadow: none;
   width: auto;
 }
+.tambahkan_mp_inner h3{
+  margin-top: 7vh;
+}
 .garis_mp{
   background-color: #000000;
   width: 1px;
@@ -758,84 +776,44 @@ a{text-decoration: none;}
   justify-content: center;
   align-items: center;
 }
+.kelola_mp{
+  /* display: flex; */
+  /* flex-direction: column; */
+  margin-top: 8%;
+  margin-left: 1vh;
+}
 .tambahkan_mp_outer{
   display: flex;
 }
-.inputinkmp{
-  margin: 7px;
-  display: flex;
-  flex-direction: column;
-}
-.inputinkmp input{
-  border-radius: 0;
+.bankname_mp select{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 7px;
+  padding-left: 10px;
   width: 100%;
-}
-.inputinkmp_cvv input{
-  border-radius: 0;
-}
-.inputinkmp_exp input{
-  border-radius: 0;
-}
-.kelola_mp{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 480px;
-  background-color: rgba(0, 0, 0, 0.1);
-  padding: 25px;
-  border-radius: 7px;
-  margin: 4vh;
-}
-.kelola_mp div{
-  display: flex;
-  justify-content: center;
-}
-.kelola_mp input{
   height: 30px;
-  border-radius: 7px;
-    outline: none;
-    border: none;
-  margin: 10px;
+  background-color: rgba(147, 240, 240, 0.4);
 }
-.card_number{
-  width: 90%;
+.card_number input{
+  width: 96%;
+  height: 25px;
+  margin-left: 7px;
+  border-radius: 5px;
+  padding-left: 10px;
 }
-.card_number div{
-  width: 100%;
+.submitmetode{
+  margin: 0;
+  margin-top: 15px;
+  float: right;
+  border-radius: 8px;
+  width: 77px;
+  height: 30px;
+  color: white;
+  font-weight: 600;
+  background-color: rgb(59, 59, 255);
+  outline: none;
+  border: none;
 }
-.card_detail{
-  width: 100%;
-}
-.inputinkmp_cvv{
-  width: 21.6%;
-  margin-left: 5%;
-  display: flex;
-  flex-direction: column;
-}
-.inputinkmp_cvv input{
-  width: 100%;
-}
-.inputinkmp_exp{
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-}
-.inputinkmp_exp input{
-  width: 100%;
-}
-.card_name{
-  width: 100%;
-}
-.inputinkmp_name{
-  width: 100%;
-  margin-top: 7px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.inputinkmp_name input{
-  border-radius: 7px;
-  width: 82.5%;
+.alert{
+  margin-top: 50px;
 }

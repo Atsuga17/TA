@@ -11,6 +11,8 @@
     $id = $_GET['id'];
     $user = getAllData('user', $_SESSION["id"]);
     $order_detail = getOrderDetailData($id);
+
+    $PayMethod = showUserPaymentData($_SESSION["id"]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +31,9 @@
 </head>
 <body class="body_checkout">
     <div class="head_form">
+        <a href="Belum_Bayar.php">Kembali</a>
         <h3>Checkout</h3>
+        <span> </span>
     </div>
     
     <form action="Bayar.php" method="post">
@@ -37,15 +41,19 @@
             <label for="alamat">Alamat Pengiriman : </label>
             <div class="alamat">
                 <?= $user[0]["USER_ADDRESS"];?>
+                <?= $user[0]["USER_ADDRESS"];?>
             </div>
         </div>
         <div class="produk_checkout">
-            <?php foreach($order_detail as $OD){ $product = getAllData('product', $OD["PRODUCT_ID"]);?>
+            <?php foreach($order_detail as $OD){ $product = getAllData("product",$OD["PRODUCT_ID"]);?>
                 <div class="produk_checkout_inner">
                     <div class="gbr">
                         <img src="<?= BASEURL; ?>/assets/images/products/<?= $product[0]["PRODUCT_IMG"]; ?>">
+                        <img src="<?= BASEURL; ?>/assets/images/products/<?= $product[0]["PRODUCT_IMG"]; ?>">
                     </div>
                     <div class="ket">
+                        <?= $product[0]["PRODUCT_NAME"]?>
+                        <?= $product[0]["PRODUCT_PRICE"]?>
                         <?= $product[0]["PRODUCT_NAME"]?>
                         <?= $product[0]["PRODUCT_PRICE"]?>
                     </div>
@@ -59,22 +67,22 @@
         <div class="total_checkout">
             <?php
                 $total + $total = $product[0]["PRODUCT_PRICE"];
+                $total + $total = $product[0]["PRODUCT_PRICE"];
             ?>
             <span>Total</span><span><?= $total?></span>
         </div>
         <div class="metode_checkout">
+            <label for="metode">Pilih Metode Pembayaran Anda</label>
             <select name="metode">
-                <option value="" select disabled>Pilih Metode Pembayaran</option>
-                <option value="Mandiri">Bank Mandiri</option>
-                <option value="Bank Rakyat Indonesia (BRI)">BRI</option>
-                <option value="Bank Negara Indonesia (BNI)">BNI</option>
-                <option value="Bank Central Asia (BCA)">BCA</option>
-                <option value="Bank Mega">Bank Mega</option>
+                <?php 
+                    foreach($PayMethod as $PAYMENT){
+                        ?>
+                            <option class="metodecheckoutopt" value="<?= $PAYMENT["PAYMENT_METHOD_ID"]?>"><?= $PAYMENT["BANK_NAME"]?></option>
+                        <?php
+                    }
+                ?>
+                <!-- <a href="Kelola_Metode_Pembayaran">Tambah Metode Pembayaran</a> -->
             </select>
-        </div>
-        <div class="no_rek">
-            <label for="rekening">No. Rekening</label>
-            <input type="text" name="rekening">
         </div>
         <div class="rincian_checkout"></div>
         <div class="buatpesanan_checkout">

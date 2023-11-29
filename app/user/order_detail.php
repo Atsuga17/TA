@@ -13,14 +13,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <!--GOOGLE FONTS-->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Play&display=swap" rel="stylesheet"> 
+    <title>TOYStore</title>
     <link rel="stylesheet" href="../../assets/css/style.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body class="order_body">
     <?php include("../../assets/inc/navbar.inc") ?>
@@ -40,21 +34,21 @@
                     Total
                 </th>
             </tr>
-            <?php foreach($orders as $order){ $products = getProductfromID($order["PRODUCT_ID"]);?>
+            <?php foreach($orders as $order){ $products = getAllData("product",$order["PRODUCT_ID"]);?>
             <tr class="row_order_detail">
                 <td>
                     <div class="img_order_detail">
                         <div class="img_icon_order_detail">
-                            <img src="<?= BASEURL; ?>/assets/images/products/<?= $products["PRODUCT_IMG"]; ?>">
+                            <img src="<?= BASEURL; ?>/assets/images/products/<?= $products[0]["PRODUCT_IMG"]; ?>">
                         </div>
                         <div class="namapro_order_detail">
-                            <?= $products["PRODUCT_NAME"]?>
+                            <?= $products[0]["PRODUCT_NAME"]?>
                         </div>
                     </div>
                 </td>
                 <td>
                     <div class="price_order_detail">
-                        <?= $products["PRODUCT_PRICE"]?>
+                        <?= $products[0]["PRODUCT_PRICE"]?>
                     </div>
                 </td>
                 <td>
@@ -64,7 +58,7 @@
                 </td>
                 <td>
                     <div class="total_order_detail">
-                        <?php $sum = $products["PRODUCT_PRICE"]*$order["QTY"]?>
+                        <?php $sum = $products[0]["PRODUCT_PRICE"]*$order["QTY"]?>
                         <?= "Rp " . number_format($sum, 0, ',', '.'); ?>
                     </div>
                 </td>

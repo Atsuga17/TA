@@ -34,8 +34,8 @@
     
     //all valid ?
     function validornot(&$errors, $post) {
-        $pattern = array('id' => "/^[a-zA-Z0-9]{8,12}+$/",'email' => "/^(([^\<\>()\[\]\\.,;:\s@\"]+(\.[^\<\>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/", 'nama' => "/^[a-zA-Z\s]{3,55}+$/", 'telepon' => "/^(0)([0-9]{10,14})+$/", 'alamat' => "/^[a-zA-Z0-9\s\.,]+$/", 'password' => "/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/");
-        $msg = array('id' => "id minimal terdiri dari 8 karakter kombinasi huruf & angka",'email' => "email tidak valid", 'nama' => "nama tidak valid", 'telepon' => "nomor telepon tidak valid", 'alamat' => "", 'password' => "password terdiri dari setidaknya 8 karakter, memiliki minimal 1 huruf kapital, huruf kecil, angka, & karakter spesial (!@#$%^&*)");
+        $pattern = array('id' => "/^[a-zA-Z0-9]{6,}+$/",'email' => "/^(([^\<\>()\[\]\\.,;:\s@\"]+(\.[^\<\>()\[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/", 'nama' => "/^[a-zA-Z\s]{3,55}+$/", 'telepon' => "/^(0)([0-9]{10,14})+$/", 'alamat' => "/^[a-zA-Z0-9\s\.,]+$/", 'password' => "/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/");
+        $msg = array('id' => "id minimal terdiri dari 6 karakter kombinasi huruf & angka",'email' => "email tidak valid", 'nama' => "nama tidak valid", 'telepon' => "nomor telepon tidak valid", 'alamat' => "", 'password' => "password terdiri dari setidaknya 8 karakter, memiliki minimal 1 huruf kapital, huruf kecil, angka, & karakter spesial (!@#$%^&*)");
         foreach ($post as $key => $value) {
             if (isset($pattern[$key])) {
                 if (isset($post[$key])) {
