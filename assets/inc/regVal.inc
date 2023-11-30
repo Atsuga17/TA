@@ -21,7 +21,7 @@
     //reset, prevent clear
     function valinp(&$data, $val) {
         if (isset($data[$val])) {
-            echo trim($data[$val]);
+            echo trim(htmlspecialchars($data[$val]));
         }
     }
 
