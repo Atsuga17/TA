@@ -34,7 +34,7 @@
     <small> <?php if (isset($_POST['password2'])) {errMsg($errors, $_POST, 'password2');} ?> </small>
 </div>
 <div class="form-field">
-    <label>Kunci :</label>
+    <label>Kunci : ( Kosongkan Jika User )</label>
     <input type="password" name="kunci" id="kunci" value="<?php if (isset($_POST['kunci'])) {valinp($_POST, 'kunci');} ?>">
     <small> <?php if (isset($_POST['kunci'])) {errMsg($errors, $_POST, 'kunci');} ?> </small>
 </div>

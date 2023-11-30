@@ -24,19 +24,19 @@
         <div class="pesanan_user_inner">
             <a href="Belum_Bayar.php">
             <div class="icon">
-                <img src="../../assets/images/icon/dompet.png">
+                <img src="../../assets/images/icon/dompet.png" alt="Gambar belum termuat">
                 <span>Belum Bayar</span>
             </div>
             </a>
             <a href="Telah_Bayar.php">
             <div class="icon">
-                <img src="../../assets/images/icon/box.png">
+                <img src="../../assets/images/icon/box.png " alt="Gambar belum termuat">
                 <span>Dikemas</span>
             </div>
             </a>
             <a href="Kelola_Metode_Pembayaran.php">
             <div class="icon">
-                <img src="../../assets/images/icon/card.png">
+                <img src="../../assets/images/icon/card.png" alt="Gambar belum termuat">
                 <span>Kelola Metode Pembayaran</span>
             </div>
             </a>
@@ -53,7 +53,7 @@
             </div> -->
             <?php $a = getAllData('user', $_SESSION["id"]);?>
             <div class="user_content">
-                <img class="profile" src="../../fahmi/profile.jpg">
+                <img class="profile" src="../../fahmi/profile.jpg" alt="Gambar belum termuat">
                 <p>Nama : <?php echo $a[0]["USER_NAME"];?></p>
                 <p>Email : <?php echo $a[0]["USER_EMAIL"];?> </p>
                 <p>Alamat : <?php echo $a[0]["USER_ADDRESS"];?> </p>

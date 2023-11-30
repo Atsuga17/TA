@@ -86,9 +86,9 @@
             <form action="Kelola_Metode_Pembayaran.php" method="post">
             <div class="kelola_mp">
                 <div class="bankname_mp">
-                    <label for="BankName">Pilih Metode :</label>
-                    <select name="BankName">
-                        <option value="" select disabled></option>
+                    <label for="selectmethod">Pilih Metode :</label>
+                    <select name="BankName" id="selectmethod">
+                        <!-- <option value="" selected disabled></option> -->
                         <option value="Mandiri">Bank Mandiri</option>
                         <option value="Bank Rakyat Indonesia (BRI)">BRI</option>
                         <option value="Bank Negara Indonesia (BNI)">BNI</option>

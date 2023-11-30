@@ -68,9 +68,10 @@
 				<td class="del_order"><a class="x_order" href="removeOrder.php?id=<?= $order["ORDER_ID"]; ?>">&#x292c;</a></td>
 			</tr>
 		</table>
+	</div>
 		<?php }?>
 	<?php }} ?>
-	</div>
+	
 
 	<?php include("../../assets/inc/footer.inc");?>
 

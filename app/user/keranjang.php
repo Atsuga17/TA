@@ -91,9 +91,10 @@
                 </a>
             </div>
         </div>
+        <?php }?>
     </div>
 
-	<?php } include("../../assets/inc/footer.inc");?>
+	<?php include("../../assets/inc/footer.inc");?>
 
 </body>
 </html>
