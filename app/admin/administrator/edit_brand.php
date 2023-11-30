@@ -34,7 +34,7 @@
 				<h1>Edit Brand</h1>
 				<form action="edit_brand.php" method="POST"  enctype="multipart/form-data">
 					<div class="form-field">
-                        <img src="../../../assets/images/products/<?php if (isset($_POST['old'])) {echo $_POST['old'];} else {echo $old;} ?>" alt="product">
+                        <img src="../../../assets/images/brands/<?php if (isset($_POST['old'])) {echo $_POST['old'];} else {echo $old;} ?>" alt="product">
                         <input type="hidden" name="old" value="<?php if (isset($_POST['old'])) {echo $_POST['old'];} else {echo $old;} ?>">
                         <input type="hidden" name="id" value="<?php echo $brands[0]['BRAND_ID']; ?>">
                     </div>

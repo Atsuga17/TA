@@ -143,7 +143,7 @@
 	    try {
 	    	$img = $post[1]['gambar']['name'];
 			$tmp = $post[1]['gambar']['tmp_name'];
-			$dir = "../../../assets/images/products/";
+			$dir = "../../../assets/images/brands/";
 			$new = time().$img;
 			move_uploaded_file($tmp, $dir . $new);
 	        $lastBrandId = getLastInsertedId('brand');
@@ -165,8 +165,8 @@
 			if (!empty($post[1]['gambar']['name'])) {
 				$img = $post[1]['gambar']['name'];
 				$tmp = $post[1]['gambar']['tmp_name'];
-				$dir = "../../../assets/images/products/";
-				$new = $img;
+				$dir = "../../../assets/images/brands/";
+				$new = time().$img;
 				move_uploaded_file($tmp, $dir . $new);
 			} else {
 				$new = $post[0]['old'];
