@@ -141,11 +141,17 @@
 	//tambah brand baru
 	function addBrand($post) {
 	    try {
+	    	$img = $post[1]['gambar']['name'];
+			$tmp = $post[1]['gambar']['tmp_name'];
+			$dir = "../../../assets/images/products/";
+			$new = time().$img;
+			move_uploaded_file($tmp, $dir . $new);
 	        $lastBrandId = getLastInsertedId('brand');
 	        $newBrandId = autoGenId($lastBrandId);
-	        $statement = DB->prepare("INSERT IGNORE INTO brand (BRAND_ID, BRAND_NAME) VALUES (:id, :name)");
+	        $statement = DB->prepare("INSERT IGNORE INTO brand (BRAND_ID, BRAND_NAME, BRAND_IMG) VALUES (:id, :name, :img)");
 	        $statement->bindValue(':id', $newBrandId);
-	        $statement->bindValue(':name', htmlspecialchars($post['nama']));
+	        $statement->bindValue(':name', htmlspecialchars($post[0]['nama']));
+	        $statement->bindValue(':img', $new);
 	        $statement->execute();
 	    } catch (PDOException $err) {
 	        echo $err->getMessage();
@@ -156,8 +162,18 @@
 	function editBrand($post) {
 		try {
 			$id = $post[0]['id'];
-	        $statement = DB->prepare("UPDATE brand SET BRAND_NAME = :name WHERE BRAND_ID = '$id'");
+			if (!empty($post[1]['gambar']['name'])) {
+				$img = $post[1]['gambar']['name'];
+				$tmp = $post[1]['gambar']['tmp_name'];
+				$dir = "../../../assets/images/products/";
+				$new = $img;
+				move_uploaded_file($tmp, $dir . $new);
+			} else {
+				$new = $post[0]['old'];
+			}
+	        $statement = DB->prepare("UPDATE brand SET BRAND_NAME = :name, BRAND_IMG = :img WHERE BRAND_ID = '$id'");
 	        $statement->bindValue(':name', htmlspecialchars($post[0]['nama']));
+	        $statement->bindValue(':img', $new);
 	        $statement->execute();
 	    } catch (PDOException $err) {
 	        echo $err->getMessage();

@@ -20,18 +20,18 @@
 		<div class="content">
 			<div class="form-container">
 				<h1>Tambah Brand</h1>
-				<form action="tambah_brand.php" method="POST">
+				<form action="tambah_brand.php" method="POST" enctype="multipart/form-data">
 					<?php
 						$table = 'brand';
 						$inc = '../../../assets/inc/brandForm.inc';
 						require '../../../assets/inc/adManVal.inc';
 			            $errors = array();
 			            if (isset($_POST['submit'])) {
-			                validornot($errors, [$_POST]);
+			                validornot($errors, [$_POST, $_FILES]);
 			                if ($errors) {
 					            include $inc;
 					        } else {
-					            addBrand($_POST);
+					            addBrand([$_POST, $_FILES]);
 					            echo "<h1>Tambah Brand berhasil !</h1>";
 					            header('location: manajemen_brand.php');
 					            exit();

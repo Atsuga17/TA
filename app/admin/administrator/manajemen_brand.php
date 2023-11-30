@@ -31,7 +31,7 @@
                 <div class="card-container">
                     <?php foreach ($brands as $brand) : ?>
                         <div class="card">
-                            <div class="cardImg" style="background-image:url(../../../assets/images/default.jpeg); background-size:cover;background-position:center;">
+                            <div class="cardImg" style="background-image:url(../../../assets/images/products/<?= $brand["BRAND_IMG"] ?>); background-size:cover;background-position:center;">
                             </div>
                             <div class="cardInfo">
                                 <?= ucwords($brand["BRAND_NAME"]) ?>

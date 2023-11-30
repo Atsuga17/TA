@@ -24,6 +24,7 @@
     }
 
     function validornot(&$errors, $post) {
+        var_dump($post);
         if (isset($post[1]['gambar'])) {
             if (empty(trim($post[1]['gambar']['name'])) && !isset($post[0]['id'])) {
                 var_dump($post[1]);
